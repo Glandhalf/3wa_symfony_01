@@ -1,0 +1,27 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}La liste des catégories{% endblock %}
+
+{% block body %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%  for categorie in categories %}
+                <tr>
+                    <th scope="row">
+                        <a href="{{ path('app_admin_categorie_add',{slug:categorie.slug})}}">{{categorie.id}} / Editer</a>
+                    </th>
+                    <td>{{categorie.name}}</td>
+                    <td>{{categorie.description}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('app_admin_categorie_add',{slug:'a'})}}" class="btn btn-primary">Ajouter une catégorie</a>
+{% endblock %}

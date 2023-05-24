@@ -1,0 +1,27 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}La liste des produits{% endblock %}
+
+{% block body %}
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Description</th>
+            <th scope="col">Prix</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}    
+                <tr>  
+                    <th scope="row"><a href="{{ path('app_admin_product_add',{slug:product.slug})}}">{{product.id}} / Editer</a></th>
+                    <td>{{product.name}}</td>
+                    <td>{{product.description}}</td>
+                    <td>{{product.price}} €</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('app_admin_product_add',{slug:'a'})}}" class="btn btn-primary">Ajouter un produit</a>
+{% endblock %}
